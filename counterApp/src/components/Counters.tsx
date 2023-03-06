@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FC } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   increment,
@@ -7,7 +7,7 @@ import {
 } from "../redux/counter/counterSlice";
 import { RootState } from "../redux/store";
 
-const Counters = () => {
+const Counters: FC = () => {
   const { value } = useSelector((state: RootState) => state.counter);
   const dispatch = useDispatch();
   const [amount, setAmount] = useState(0);
