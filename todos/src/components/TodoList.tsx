@@ -1,11 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { toogle } from "../redux/todos/todosSlice";
+import { destroy, Todo, toogle } from "../redux/todos/todosSlice";
 import { TodoState, useAppDispatch } from "../redux/store";
 
 const TodoList: React.FC = () => {
   const items = useSelector((state: TodoState) => state.todos);
   const dispatch1 = useAppDispatch();
+
+  const handleDel = (id: Todo["id"]) => {
+    if (confirm("Emin misiniz")) {
+      dispatch1(destroy(id));
+    }
+  };
   return (
     <ul className="todo-list">
       {items.map((item) => (
@@ -17,7 +23,10 @@ const TodoList: React.FC = () => {
               onChange={() => dispatch1(toogle(item.id))}
             />
             <label>{item.title}</label>
-            <button className="destroy"></button>
+            <button
+              className="destroy"
+              onClick={() => handleDel(item.id)}
+            ></button>
           </div>
         </li>
       ))}

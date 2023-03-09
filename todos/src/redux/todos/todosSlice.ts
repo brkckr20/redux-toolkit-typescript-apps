@@ -19,9 +19,14 @@ export const todosSlice = createSlice({
         toogle: (state, action: PayloadAction<string>) => {
             return state.map((todo) => todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo);
         },
+        destroy: (state, action : PayloadAction<Todo["id"]>) => {
+            const id = action.payload;
+            const filtered = state.filter(item => item.id !== id);         
+            return state = filtered;            
+        }
     }
 
 })
 
 export default todosSlice.reducer;
-export const { addTodo, toogle } = todosSlice.actions;
+export const { addTodo, toogle, destroy } = todosSlice.actions;
