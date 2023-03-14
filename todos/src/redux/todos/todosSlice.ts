@@ -29,10 +29,6 @@ export const todosSlice = createSlice({
         // toogle: (state, action: PayloadAction<string>) => {
         //     return state.todos.map((todo) => todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo);
         // },
-        toogle: (state, action: PayloadAction<Todo["id"]>) => {
-            console.log("toogledayız");  
-            return state.todos.map((todo) => todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo);         
-        },
         // destroy: (state, action : PayloadAction<Todo["id"]>) => {
         //     const id = action.payload;
         //     const filtered = state.todos.filter(item => item.id !== id);         
@@ -50,4 +46,4 @@ export const todosSlice = createSlice({
 })
 
 export default todosSlice.reducer;
-export const { addTodo, toogle/* destroy */, changeActive, clearCompleted } = todosSlice.actions;
+export const { addTodo/* destroy */, changeActive, clearCompleted } = todosSlice.actions;
