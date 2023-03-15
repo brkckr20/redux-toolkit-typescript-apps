@@ -5,10 +5,10 @@ import { TodoState, useAppDispatch, useAppSelector } from "../redux/store";
 
 const TodoList: React.FC = () => {
   const items = useSelector((state: TodoState) => state.todos.todos);
-  const [filtered, setFiltered] = useState<Todo[]>(items);
 
   const activeFilter = useAppSelector((state) => state.todos.activeFilter);
   const dispatch1 = useAppDispatch();
+  const [list, setList] = useState(items);
 
   const handleDel = (id: Todo["id"]) => {
     if (confirm("Emin misiniz")) {
@@ -16,9 +16,25 @@ const TodoList: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    changeList();
+  }, [activeFilter]);
+
+  const changeList = () => {
+    if (activeFilter === "All") {
+      setList(items);
+    } else if (activeFilter === "Active") {
+      const l = list.filter((i) => i.completed === false);
+      setList(l);
+    } else if (activeFilter === "Completed") {
+      const l = list.filter((i) => i.completed === true);
+      setList(l);
+    }
+  };
+
   return (
     <ul className="todo-list">
-      {filtered.map((item) => (
+      {list.map((item) => (
         <li key={item.id} className={item.completed ? "completed" : ""}>
           <div className="view">
             <input

@@ -5,7 +5,6 @@ import { useAppDispatch } from "../redux/store";
 
 const Form = () => {
   const [title, setTitle] = useState<string>("");
-  const dispatch = useDispatch();
   const dispatch1 = useAppDispatch(); //custom hook
 
   const handleSubmit = (e: React.SyntheticEvent) => {

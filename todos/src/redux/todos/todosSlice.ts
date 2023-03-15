@@ -23,7 +23,7 @@ export const todosSlice = createSlice({
     name: "todos",
     initialState,
     reducers: {
-        addTodo: (state,action : PayloadAction<Todo>) => {
+        addTodo: (state, action: PayloadAction<Todo>) => {
             state.todos.push(action.payload);
         },
         // toogle: (state, action: PayloadAction<string>) => {
