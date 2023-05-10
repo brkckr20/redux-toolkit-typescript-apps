@@ -8,6 +8,9 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(fetchCharacters())
+
+        //cekilen karakterlerin listelenmesinden devam et
+
     }, [])
 
     return (
